@@ -12,11 +12,11 @@ public:
 
     static void bankName() {
         system("Color 3F");
-        printTextGradually("\t\t\t\t\t******************************************", 10);
-        printTextGradually("\t\t\t\t\t*           * * * * * * * * * *          *", 10);
-        printTextGradually("\t\t\t\t\t*           *  Mohammed Bank  *          *", 10);
-        printTextGradually("\t\t\t\t\t*           * * * * * * * * * *          *", 10);
-        printTextGradually("\t\t\t\t\t******************************************", 10);
+        printTextGradually("\t\t\t\t\t******************************************", 0); //7
+        printTextGradually("\t\t\t\t\t*           * * * * * * * * * *          *", 0);
+        printTextGradually("\t\t\t\t\t*           *  Mohammed Bank  *          *", 0);
+        printTextGradually("\t\t\t\t\t*           * * * * * * * * * *          *", 0);
+        printTextGradually("\t\t\t\t\t******************************************", 0);
         this_thread::sleep_for(chrono::milliseconds(1500)); // تأخير بعد عرض النص
     }
 
@@ -24,8 +24,8 @@ public:
     static void welcome() {
         system("Color 3F");
         setCursorPosition(49, 0);
-        printTextGradually("Welcome to Mohammed Bank!", 100);
-        this_thread::sleep_for(chrono::milliseconds(500)); // تأخير بعد عرض النص
+        printTextGradually("Welcome to Mohammed Bank!", 0); //35
+        this_thread::sleep_for(chrono::milliseconds(2)); // 500
         system("cls");
     }
 
@@ -143,7 +143,7 @@ public:
     }
 
     static void runApp() {
-        FileManager::getAllData();
+        FilesHelper::getAllData();
         bankName();
         welcome();
         Sleep(1000);

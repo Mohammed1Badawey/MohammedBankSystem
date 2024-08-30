@@ -67,22 +67,6 @@ public:
         cout << "balance -> " << balance << endl;
     }
 
-    Person* login(int id, string password)  {
-        if (this->id == id && this->password == password) {
-            cout << "Client logged in successfully." << endl;
-            return this;
-        }
-        else {
-            cout << "Invalid id or password." << endl;
-            return nullptr;
-        }
-    }
-
-    Person* createAccount(string name, int id, string password, double balance) {
-        cout << "Creating client account: " << name << ", ID: " << id << endl;
-        return new Client(name, id, password, balance);
-    }
-
     ~Client() {
 
     }

@@ -15,7 +15,9 @@ public:
         cout << "\t\t\t\t\t 2 - List all clients\n";
         cout << "\t\t\t\t\t 3 - Search for client\n";
         cout << "\t\t\t\t\t 4 - Edit client information\n";
-        cout << "\t\t\t\t\t 5 - Exit\n";
+        cout << "\t\t\t\t\t 5 - Change password\n";
+        cout << "\t\t\t\t\t 6 - Account information\n";
+        cout << "\t\t\t\t\t 7 - Exit\n";
     }
 
     static Employee* login(int id, string password) {
@@ -102,8 +104,19 @@ public:
                 FileManager::updateClients();
                 break;
             }
-
+                  //update employee password
             case 5: {
+                ClientManager::updatePassword(employee);
+                FileManager::updateEmployees();
+                break;
+            }
+                   // Display
+            case 6: {
+                employee->Display();
+                break;
+            }
+                  // Exiting
+            case 7: {
                 cout << "Exiting system... Goodbye!\n";
                 return false;
             }

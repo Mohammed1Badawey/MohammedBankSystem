@@ -18,7 +18,8 @@ public:
         cout << "\t\t\t\t\t 3 - Show balance\n";
         cout << "\t\t\t\t\t 4 - Transfer\n";
         cout << "\t\t\t\t\t 5 - Account information\n";
-        cout << "\t\t\t\t\t 6 - Exit\n";
+        cout << "\t\t\t\t\t 6 - Change password\n";
+        cout << "\t\t\t\t\t 7 - Exit\n";
     }
 
     static void updatePassword(Person* person) {
@@ -42,7 +43,7 @@ public:
         cout << "Password updated successfully.\n";
     }
 
-    static Person* login(int id, string password) {
+    static Client* login(int id, string password) {
         Client* client = searchClientById(id);
         if (client) {
             if (client->getPassword() == password) {
@@ -84,6 +85,10 @@ public:
                 break;
             case 5:
                 client->Display();
+                break;
+            case 6:
+                updatePassword(client);
+                FileManager::updateClients();
                 break;
             case 7:
                 cout << "Exiting system... Goodbye!\n";

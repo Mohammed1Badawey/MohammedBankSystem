@@ -19,7 +19,8 @@ public:
         cout << "\t\t\t\t\t 5 - Edit Employee Information\n";
         cout << "\t\t\t\t\t 6 - List all Clients\n";
         cout << "\t\t\t\t\t 7 - List all Employees\n";
-        cout << "\t\t\t\t\t 8 - Exit\n";
+        cout << "\t\t\t\t\t 8 - Account information\n";
+        cout << "\t\t\t\t\t 9 - Exit\n";
     }
 
     static void printEmployeeMenu() {
@@ -152,6 +153,11 @@ public:
             }
 
             case 8: {
+                admin->Display();
+                break;
+            }
+
+            case 9: {
                 cout << "Exiting system... Goodbye!\n";
                 return false;
             }
