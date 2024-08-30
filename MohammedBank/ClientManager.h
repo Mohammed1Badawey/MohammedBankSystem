@@ -1,10 +1,6 @@
 #pragma once
 #include "Employee.h"
-#include "FilesHelper.h"
-
-
-
-
+#include "FileManager.h"
 
 using namespace std;
 
@@ -12,7 +8,6 @@ using namespace std;
 class ClientManager {
 public:
     static int currentClientId;
-
 
 
 
@@ -47,7 +42,7 @@ public:
         cout << "Password updated successfully.\n";
     }
 
-    static Client* login(int id, string password) {
+    static Person* login(int id, string password) {
         Client* client = searchClientById(id);
         if (client) {
             if (client->getPassword() == password) {
@@ -74,15 +69,18 @@ public:
             switch (choice) {
             case 1:
                 depositClient();
+                FileManager::updateClients();
                 break;
             case 2:
                 withdrawClient();
+                FileManager::updateClients();
                 break;
             case 3:
                 client->checkBalance();
                 break;
             case 4:
                 transferAmount();
+                FileManager::updateClients();
                 break;
             case 5:
                 client->Display();
@@ -130,7 +128,6 @@ public:
                 }
                 else {
                     cout << "Recipient not found. Please try again.\n";
-                    //return;
                 }
             }
         } while (attempts < 3 && !validRecipient);
@@ -171,8 +168,8 @@ public:
         else {
             cout << "Transfer canceled.\n";
         }
-        FilesHelper::updateClientFile(searchClientById(currentClientId));
-        FilesHelper::updateClientFile(searchClientById(recipientId));
+        
+        
     }
 
     static void depositClient() {
@@ -187,7 +184,7 @@ public:
         else {
             cout << "Invalid deposit amount.\n";
         }
-        FilesHelper::updateClientFile(searchClientById(currentClientId));
+        
     }
 
     static void withdrawClient() {
@@ -202,7 +199,7 @@ public:
         else {
             cout << "Insufficient balance or invalid amount.\n";
         }
-        FilesHelper::updateClientFile(searchClientById(currentClientId));
+        
     }
 
     static Client* searchClientById(int id) {

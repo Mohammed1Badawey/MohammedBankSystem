@@ -6,40 +6,63 @@ using namespace std;
 class FileManager : public DataSourceInterface {
 public:
     FileManager() {};
-    void addClient(Client* client) {
+    static void addClient(Client* client) {
         FilesHelper::saveClient(client);
     }
 
-    void addEmployee(Employee* employee) {
+    static void addEmployee(Employee* employee) {
         FilesHelper::saveEmployee(employee);
     }
 
-    void addAdmin(Admin* admin) {
+    static void addAdmin(Admin* admin) {
         FilesHelper::saveAdmin(admin);
     }
 
-    void getAllClients() {
+    static void getAllClients() {
         FilesHelper::getClients();
     }
 
-    void getAllEmployees() {
+    static void getAllEmployees() {
         FilesHelper::getEmployees();
     }
 
-    void getAllAdmins() {
+    static void getAllAdmins() {
         FilesHelper::getAdmins();
     }
 
-    void removeAllClients() {
+    static void removeAllClients() {
         FilesHelper::clearFile("clientData.txt", "lastClientId.txt");
     }
 
-    void removeAllEmployees() {
+    static void removeAllEmployees() {
         FilesHelper::clearFile("employeeData.txt", "lastEmployeeId.txt");
     }
 
-    void removeAllAdmins() {
+    static void removeAllAdmins() {
         FilesHelper::clearFile("adminData.txt", "lastAdminId.txt");
+    }
+
+    static void getAllData() {
+        getAllClients();
+        getAllEmployees();
+        getAllAdmins();
+    }
+
+    static void updateClients() {
+        removeAllClients();
+        for (auto Clientit = clientList.begin(); Clientit != clientList.end(); ++Clientit) {
+            addClient(*Clientit);
+        }
+    }
+
+    static void updateEmployees() {
+        removeAllEmployees();
+        for (Employeeit = employeeList.begin(); Employeeit != employeeList.end(); Employeeit++) addEmployee(*Employeeit);
+    }
+
+    static void updateAdmins() {
+        removeAllAdmins();
+        for (Adminit = adminList.begin(); Adminit != adminList.end(); Adminit++) addAdmin(*Adminit);
     }
 
 };

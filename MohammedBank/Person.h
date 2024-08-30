@@ -12,6 +12,7 @@ protected:
     string name;
     int id;
     string password;
+
 public:
     // cons
     Person()
@@ -64,6 +65,10 @@ public:
         cout << "Name -> " << name << endl;
         //cout << "Password -> " << password << endl;
     }
+
+    virtual Person* login(int id, string password) = 0;
+
+    virtual Person* createAccount(string name, int id, string password,double d) = 0;
 
     ~Person() {
 

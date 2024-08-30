@@ -9,7 +9,6 @@ using namespace std;
 int main()
 {
     Admin* admin = Admin::getInstance();
-    FileManager f;
     Screens::runApp();
     return 0;
 

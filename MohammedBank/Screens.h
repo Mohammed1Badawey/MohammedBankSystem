@@ -1,9 +1,9 @@
-#pragma once
+﻿#pragma once
 #include "AdminManager.h"
 #include "FileManager.h"
-
-
-
+#include <windows.h>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
@@ -11,14 +11,24 @@ class Screens {
 public:
 
     static void bankName() {
-        cout << "\t\t\t\t **************************************** \n";
-        cout << "\t\t\t\t*              Mohammed Bank             *\n";
-        cout << "\t\t\t\t **************************************** \n";
+        system("Color 3F");
+        printTextGradually("\t\t\t\t\t******************************************", 10);
+        printTextGradually("\t\t\t\t\t*           * * * * * * * * * *          *", 10);
+        printTextGradually("\t\t\t\t\t*           *  Mohammed Bank  *          *", 10);
+        printTextGradually("\t\t\t\t\t*           * * * * * * * * * *          *", 10);
+        printTextGradually("\t\t\t\t\t******************************************", 10);
+        this_thread::sleep_for(chrono::milliseconds(1500)); // تأخير بعد عرض النص
     }
 
+
     static void welcome() {
-        cout << "\t\t\t\t\tWelcome to Mohammed Bank!\n";
+        system("Color 3F");
+        setCursorPosition(49, 0);
+        printTextGradually("Welcome to Mohammed Bank!", 100);
+        this_thread::sleep_for(chrono::milliseconds(500)); // تأخير بعد عرض النص
+        system("cls");
     }
+
 
     static void loginOptions() {
         cout << "\t\t\t\t\t   Select login option:\n";
@@ -28,7 +38,6 @@ public:
         cout << "\t\t\t\t\t   4. Exit\n";
     }
 
-    // d. static int loginAs()
     static int loginAs() {
         int option;
         loginOptions();
@@ -41,59 +50,77 @@ public:
         return option;
     }
 
-    // e. static void invalid(int c)
     static void invalid(int c) {
+        system("Color 4F");
         cout << "Invalid choice (" << c << "). Please try again.\n";
+        Sleep(2000);
+        system("Color 0F");
     }
 
-    // f. static void logout()
     static void logout() {
         cout << "Logging out... Goodbye!\n";
+        Sleep(1000);
+        system("cls");
+        return;
     }
 
-    // g. static void loginScreen(int c)
     static void loginScreen(int c) {
-        int id;
-        string password;
-        switch (c) {
+        int choice = c;
+
+        switch (choice) {
+
         case 1: {
-            cout << "Client Login:\n";
-            cout << "Enter Client ID: ";
+            int id;
+            string password;
+            cout << "\t\t\t\t\tEnter your id: ";
             cin >> id;
-            cout << "Enter Password: ";
+            cout << "\t\t\t\t\tEnter your password: ";
             cin >> password;
             Client* client = ClientManager::login(id, password);
-            if (client) {
-                ClientManager::clientOptions(client);
+            system("cls");
+
+            if (client != nullptr) {
+                while (ClientManager::clientOptions(client) != false);
+                logout();
             }
             else {
                 invalid(c);
             }
             break;
         }
+
         case 2: {
-            cout << "Employee Login:\n";
-            cout << "Enter Employee ID: ";
+            int id;
+            string password;
+            cout << "\t\t\t\t\tEnter your id: ";
             cin >> id;
-            cout << "Enter Password: ";
+            cout << "\t\t\t\t\tEnter your password: ";
             cin >> password;
+
             Employee* employee = EmployeeManager::login(id, password);
-            if (employee) {
-                EmployeeManager::employeeOptions(employee);
+            system("cls");
+
+            if (employee != nullptr) {
+                while (EmployeeManager::employeeOptions(employee) != false);
+                logout();
             }
             else {
                 invalid(c);
             }
             break;
         }
+
         case 3: {
-            cout << "Admin Login:\n";
-            cout << "Enter Admin ID: ";
+            int id;
+            string password;
+            cout << "\t\t\t\t\tEnter your id: ";
             cin >> id;
-            cout << "Enter Password: ";
+            cout << "\t\t\t\t\tEnter your password: ";
             cin >> password;
+            system("cls");
+
             Admin* admin = AdminManager::login(id, password);
-            if (admin) {
+            if (admin != nullptr) {
                 AdminManager::adminOptions();
             }
             else {
@@ -101,27 +128,42 @@ public:
             }
             break;
         }
-        case 4:
+
+        case 4: {
             logout();
             break;
-        default:
+        }
+
+        default: {
             invalid(c);
             break;
         }
+
+        }
     }
 
-    // h. static void runApp()
     static void runApp() {
-        FileManager* f = new FileManager();
-        f->getAllClients();
-        f->getAllEmployees();
-        f->getAllAdmins();
+        FileManager::getAllData();
+        bankName();
+        welcome();
+        Sleep(1000);
+        loginScreen(loginAs());
+        system("Color 0F");
+    }
 
-        int choice;
-        do {
-            welcome();
-            choice = loginAs();
-            loginScreen(choice);
-        } while (choice != 4);
+private:
+    static void setCursorPosition(int x, int y) {
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+        COORD pos = { x, y };
+        SetConsoleCursorPosition(hConsole, pos);
+    }
+
+    static void printTextGradually(const string& text, int delay_ms) {
+        for (char ch : text) {
+            cout << ch;
+            cout.flush();  // لضمان طباعة الحرف فوراً
+            this_thread::sleep_for(chrono::milliseconds(delay_ms));
+        }
+        cout << endl;  // لطباعة سطر جديد بعد الانتهاء من النص
     }
 };

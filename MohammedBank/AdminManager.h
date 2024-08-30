@@ -116,7 +116,7 @@ public:
                 cout << "Enter new balance: ";
                 cin >> balance;
                 admin->editClient(id, name, password, balance);
-                FilesHelper::updateClientFile(client);
+                FileManager::updateClients();
                 break;
             }
 
@@ -135,8 +135,7 @@ public:
                 cout << "Enter new employee salary: ";
                 cin >> salary;
                 admin->editEmployee(id, name, password, salary);
-                FilesHelper::updateEmployeeFile(employee);
-
+                FileManager::updateEmployees();
                 break;
             }
 
