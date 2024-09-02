@@ -1,16 +1,17 @@
 #pragma once
 #include <vector>
+using namespace std;
 class Admin;
 class Employee;
 class Client;
 
-extern std::vector<Client*> clientList;
-extern std::vector<Employee*> employeeList;
-extern std::vector<Admin*> adminList;
+extern vector<Client*> clientList;
+extern vector<Employee*> employeeList;
+extern vector<Admin*> adminList;
 
-static std::vector<Client*>::iterator Clientit;
-static std::vector<Employee*>::iterator Employeeit;
-static std::vector<Admin*>::iterator Adminit;
+static vector<Client*>::iterator Clientit;
+static vector<Employee*>::iterator Employeeit;
+static vector<Admin*>::iterator Adminit;
 
 class GlobalVectors
 {};

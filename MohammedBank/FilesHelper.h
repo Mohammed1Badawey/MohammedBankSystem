@@ -125,7 +125,7 @@ public:
         thread employeeThread(getEmployees);
         thread adminThread(getAdmins);
 
-        // انتظار الخيوط حتى تنتهي
+        
         clientThread.join();
         employeeThread.join();
         adminThread.join();
