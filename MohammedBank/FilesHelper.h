@@ -119,8 +119,10 @@ public:
             cout << "Error opening adminData.txt for reading!" << endl;
         }
     }
+     
 
-    static void getAllData() {
+    // لا تقترب من هنا ولو عايز تعرفها اسألني واتساب
+    /*static void getAllData() {
         thread clientThread(getClients);
         thread employeeThread(getEmployees);
         thread adminThread(getAdmins);
@@ -129,7 +131,7 @@ public:
         clientThread.join();
         employeeThread.join();
         adminThread.join();
-    }
+    }*/
 
     static void clearFile(const string& fileName, const string& lastIdFile) {
         ofstream ofs(fileName, ios::trunc);
