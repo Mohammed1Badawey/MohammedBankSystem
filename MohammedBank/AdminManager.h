@@ -20,7 +20,8 @@ public:
         cout << "\t\t\t\t\t 6 - List all Clients\n";
         cout << "\t\t\t\t\t 7 - List all Employees\n";
         cout << "\t\t\t\t\t 8 - Account information\n";
-        cout << "\t\t\t\t\t 9 - Exit\n";
+        cout << "\t\t\t\t\t 9 - Update salary\n";
+        cout << "\t\t\t\t\t 10 - Exit\n";
     }
 
     static void printEmployeeMenu() {
@@ -158,6 +159,18 @@ public:
             }
 
             case 9: {
+                int id;
+                cout << "Enter employee ID ";
+                cin >> id;
+                Employee* employee = admin->searchEmployee(id);
+                cout << employee->getName() << " salary : " << employee->getSalary() << endl;
+                updateSalary(employee);
+                cout << "Salary after is -> "  << employee->getSalary() << endl;
+                FileManager::updateEmployees();
+                break;
+            }
+
+            case 10: {
                 cout << "Exiting system... Goodbye!\n";
                 return false;
             }
@@ -176,6 +189,7 @@ public:
             } while (op != 'Y' && op != 'N');
 
             if (op == 'N') {
+                system("cls");
                 cout << "Exiting system... Goodbye!\n";
                 return false;
             }
@@ -183,5 +197,18 @@ public:
         } while (op == 'Y');
 
         return true;
+    }
+
+    static void updateSalary(Employee* employee) {
+        double oldSalary, newSalary,Percentage;
+        oldSalary = employee->getSalary();
+        cout << "Enter Percentage: ";
+        cin >> Percentage;
+
+        newSalary = (oldSalary * Percentage / 100) + oldSalary;
+        
+
+        employee->setSalary(newSalary);
+        cout << "Salary updated successfully.\n";
     }
 };
