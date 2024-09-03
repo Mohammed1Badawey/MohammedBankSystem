@@ -209,7 +209,7 @@ public:
 
     static Client* searchClientById(int id) {
         if (id > 0 && id <= clientList.size()) {
-            return clientList[id - 1];
+            return &(clientList[id - 1]);
         }
         else {
             cout << "Client with ID " << id << " not found.\n";

@@ -2,6 +2,7 @@
 #include "Person.h"
 
 
+
 using namespace std;
 
 class Client : public Person
@@ -15,6 +16,7 @@ public:
     {
         balance = 0.0;
     }
+   
     Client(string name, int id, string password, double balance) : Person(name, id, password)
     {
         setBalance(balance);
@@ -28,7 +30,8 @@ public:
         this->balance = balance;
     }
     // getter
-    const double getBalance() { return balance; }
+    const double getBalance() {
+        return balance; }
     // methods
 
     void deposit(double amount)
@@ -46,6 +49,7 @@ public:
             cout << "Wrong value\n";
         }
     }
+   
     void transferTo(double amount, Client& recipient)
     {
         if (amount <= balance) {
@@ -57,10 +61,12 @@ public:
             cout << "Wrong value\n";
         }
     }
+    
     const void checkBalance()
     {
         cout << "Your balance is -> " << balance << endl;
     }
+   
     const void Display()
     {
         Person::Display();
@@ -71,4 +77,8 @@ public:
 
     }
 };
+
+static vector <Client> clientList;
+static vector <Client>::iterator itClientit;
+
 

@@ -50,19 +50,22 @@ public:
 
     static void updateClients() {
         removeAllClients();
-        for (auto Clientit = clientList.begin(); Clientit != clientList.end(); ++Clientit) {
-            addClient(*Clientit);
+        for (Client itClient : clientList) {
+            addClient(&(itClient));
         }
     }
 
     static void updateEmployees() {
         removeAllEmployees();
-        for (Employeeit = employeeList.begin(); Employeeit != employeeList.end(); Employeeit++) addEmployee(*Employeeit);
+        for (Employee itEmployee : employeeList)
+        addEmployee(&(itEmployee));
     }
 
     static void updateAdmins() {
         removeAllAdmins();
-        for (Adminit = adminList.begin(); Adminit != adminList.end(); Adminit++) addAdmin(*Adminit);
+        for (Admin* itAdmin : adminList )
+            addAdmin(itAdmin);
+
     }
 
 };

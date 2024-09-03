@@ -2,6 +2,8 @@
 #include <iostream>
 #include <string>
 #include "Validation.h"
+#include <vector>
+#include <iterator>
 
 
 using namespace std;

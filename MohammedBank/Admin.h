@@ -16,19 +16,18 @@ public:
         {
             instance = new Admin(name, id, password, salary);
         }
-        adminList.push_back(instance);
         return instance;
 
     }
 
     void addEmployee(Employee& employee) {
-        employeeList.push_back(&employee);
+        employeeList.push_back(employee);
     }
 
     Employee* searchEmployee(int id) {
-        for (Employee* employee : employeeList) {
-            if (employee->getId() == id) {
-                return employee;
+        for (Employee employee : employeeList) {
+            if (employee.getId() == id) {
+                return &employee;
             }
         }
         return nullptr;
@@ -53,8 +52,8 @@ public:
             return;
         }
 
-        for (Employee* employee : employeeList) {
-            employee->Display();
+        for (Employee employee : employeeList) {
+            employee.Display();
             cout << "------" << endl;
         }
     }
@@ -64,3 +63,6 @@ public:
     }
 
 };
+
+static vector<Admin*> adminList;
+static vector<Admin*>::iterator itAdmin;

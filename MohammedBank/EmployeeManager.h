@@ -22,7 +22,7 @@ public:
 
     static Employee* login(int id, string password) {
         if (id > 0 && id <= employeeList.size()) {
-            Employee* employee = employeeList[id - 1];
+            Employee* employee = &(employeeList[id - 1]);
             if (employee->getPassword() == password)
             {
                 return employee;

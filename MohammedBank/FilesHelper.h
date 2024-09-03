@@ -79,7 +79,7 @@ public:
             string line;
             while (getline(ifs, line)) {
                 Client* c = new Client(Parser::parseToClient(line));
-                clientList.push_back(c);
+                clientList.push_back(*c);
             }
         }
         else {
@@ -93,7 +93,7 @@ public:
             string line;
             while (getline(ifs, line)) {
                 Employee* e = new Employee(Parser::parseToEmployee(line));
-                employeeList.push_back(e);
+                employeeList.push_back(*e);
             }
         }
         else {
@@ -121,7 +121,6 @@ public:
     }
      
 
-    // لا تقترب من هنا ولو عايز تعرفها اسألني واتساب
     /*static void getAllData() {
         thread clientThread(getClients);
         thread employeeThread(getEmployees);

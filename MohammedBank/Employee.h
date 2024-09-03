@@ -18,6 +18,7 @@ public:
     {
         salary = 0.0;
     }
+   
     Employee(string name, int id, string password, double salary) :Person(name, id, password)
     {
         setSalary(salary);
@@ -38,21 +39,21 @@ public:
     }
 
     // methods
-    const void Display()
+    void Display()
     {
         Person::Display();
         cout << "Salary -> " << salary << endl;
     } //
 
     void addClient(Client& client) {
-        clientList.push_back(&client);
+        clientList.push_back(client);
 
     }
 
     Client* searchClient(int id) {
-        for (Client* client : clientList) {
-            if (client->getId() == id) {
-                return client;
+        for (Client client : clientList) {
+            if (client.getId() == id) {
+                return &client;
             }
         }
         return nullptr;
@@ -64,8 +65,8 @@ public:
             return;
         }
 
-        for (Client* client : clientList) {
-            client->Display();
+        for (Client client : clientList) {
+            client.Display();
             cout << "=============" << endl;
         }
     }
@@ -87,4 +88,8 @@ public:
 
     }
 };
+
+static vector<Employee> employeeList;
+static vector<Employee>::iterator itEmployee;
+
 
