@@ -70,7 +70,7 @@ public:
                 cin >> balance;
                 Client* client = new Client(name, id, password, balance);
                 admin->addClient(*client);
-                FilesHelper::saveClient(client);
+                FilesHelper::saveClient(*client);
                 cout << "Client added successfully.\n";
                 FileManager::updateClients();
                 client->Display();
@@ -85,13 +85,13 @@ public:
                 int id = FilesHelper::getLast("lastEmployeeId.txt") + 1;
                 cout << "Enter employee name: ";
                 cin >> name;
-                cout << "\nEnter employee password: ";
+                cout << "Enter employee password: ";
                 cin >> password;
-                cout << "\nEnter employee salary: ";
+                cout << "Enter employee salary: ";
                 cin >> salary;
                 Employee* employee = new Employee(name, id, password, salary);
                 admin->addEmployee(*employee);
-                FilesHelper::saveEmployee(employee);
+                FilesHelper::saveEmployee(*employee);
                 cout << "\nEmployee added successfully.\n";
                 FileManager::updateClients();
                 employee->Display();

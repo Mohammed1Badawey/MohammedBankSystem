@@ -159,11 +159,12 @@ private:
     }
 
     static void printTextGradually(const string& text, int delay_ms) {
-        for (char ch : text) {
-            cout << ch;
+        for (int i = 0; i < text.size(); i++) {
+            cout << text[i];
             cout.flush();  // لضمان طباعة الحرف فوراً
             this_thread::sleep_for(chrono::milliseconds(delay_ms));
         }
         cout << endl;  // لطباعة سطر جديد بعد الانتهاء من النص
     }
+
 };

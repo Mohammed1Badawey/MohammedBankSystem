@@ -85,13 +85,14 @@ public:
     }
 
     static bool isNumberId(const string& str) {
-        for (char c : str) {
-            if (!isdigit(c)) {
+        for (int i = 0; i < str.size(); i++) {
+            if (!isdigit(str[i])) {
                 return false;
             }
         }
         return true;
     }
+
 
 
 };

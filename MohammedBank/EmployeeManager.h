@@ -59,7 +59,7 @@ public:
                 cin >> balance;
                 Client* client = new Client(name, id, password, balance);
                 employee->addClient(*client);
-                FilesHelper::saveClient(client);
+                FilesHelper::saveClient(*client);
                 cout << "Client added successfully.\n";
                 FileManager::updateClients();
                 client->Display();

@@ -69,9 +69,9 @@ public:
 		int id = stoi(parts[0]);
 		string name = parts[1];
 		string password = parts[2];
-		int level = stoi(parts[3]);
+		int salary = stoi(parts[3]);
 
-		Admin* admin = Admin::getInstance(name, id, password, level);
+		Admin* admin = Admin::getInstance(name, id, password, salary);
 		return admin;
 	}
 };

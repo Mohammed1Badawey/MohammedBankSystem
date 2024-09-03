@@ -6,11 +6,11 @@ using namespace std;
 class FileManager : public DataSourceInterface {
 public:
     FileManager() {};
-    static void addClient(Client* client) {
+    static void addClient(Client client) {
         FilesHelper::saveClient(client);
     }
 
-    static void addEmployee(Employee* employee) {
+    static void addEmployee(Employee employee) {
         FilesHelper::saveEmployee(employee);
     }
 
@@ -50,22 +50,24 @@ public:
 
     static void updateClients() {
         removeAllClients();
-        for (Client itClient : clientList) {
-            addClient(&(itClient));
+        for (itClient = clientList.begin(); itClient != clientList.end(); itClient++) {
+            addClient(*itClient);
         }
     }
 
     static void updateEmployees() {
         removeAllEmployees();
-        for (Employee itEmployee : employeeList)
-        addEmployee(&(itEmployee));
+        for (itEmployee = employeeList.begin(); itEmployee != employeeList.end(); itEmployee++) {
+            addEmployee(*itEmployee);
+        }
     }
 
     static void updateAdmins() {
         removeAllAdmins();
-        for (Admin* itAdmin : adminList )
-            addAdmin(itAdmin);
-
+        for (int i = 0; i < adminList.size(); i++) {
+            addAdmin(adminList[i]);
+        }
     }
+
 
 };

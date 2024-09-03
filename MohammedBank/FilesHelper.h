@@ -36,11 +36,11 @@ public:
         }
     }
 
-    static void saveClient(Client* c) {
+    static void saveClient(Client c) {
         ofstream ofs("clientData.txt", ios::app);
         if (ofs.is_open()) {
-            ofs << c->getId() << "|" << c->getName() << "|" << c->getPassword() << "|" << c->getBalance() << endl;
-            int i = c->getId();
+            ofs << c.getId() << "|" << c.getName() << "|" << c.getPassword() << "|" << c.getBalance() << endl;
+            int i = c.getId();
             saveLast("lastClientId.txt", i);
         }
         else {
@@ -48,11 +48,11 @@ public:
         }
     }
 
-    static void saveEmployee(Employee* e) {
+    static void saveEmployee(Employee e) {
         ofstream ofs ("employeeData.txt", ios::app);
         if (ofs.is_open()) {
-            ofs << e->getId() << "|" << e->getName() << "|" << e->getPassword() << "|" << e->getSalary() << endl;
-            int i = e->getId();
+            ofs << e.getId() << "|" << e.getName() << "|" << e.getPassword() << "|" << e.getSalary() << endl;
+            int i = e.getId();
             saveLast("lastEmployeeId.txt", i);
         }
         else {
@@ -118,19 +118,7 @@ public:
             cout << "Error opening adminData.txt for reading!" << endl;
         }
     }
-     
-
-    /*static void getAllData() {
-        thread clientThread(getClients);
-        thread employeeThread(getEmployees);
-        thread adminThread(getAdmins);
-
-        
-        clientThread.join();
-        employeeThread.join();
-        adminThread.join();
-    }*/
-
+   
     static void clearFile(const string& fileName, const string& lastIdFile) {
         ofstream ofs(fileName, ios::trunc);
         if (ofs.is_open()) {

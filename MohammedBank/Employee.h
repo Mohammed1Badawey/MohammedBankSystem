@@ -50,9 +50,9 @@ public:
     }
 
     Client* searchClient(int id) {
-        for (Client client : clientList) {
-            if (client.getId() == id) {
-                return &client;
+        for (int i = 0; i < clientList.size();i++) {
+            if (clientList[i].getId() == id) {
+                return &clientList[i];
             }
         }
         return nullptr;
@@ -64,8 +64,8 @@ public:
             return;
         }
 
-        for (Client client : clientList) {
-            client.Display();
+        for (int i = 0; i < clientList.size(); i++) {
+            clientList[i].Display();
             cout << "=============" << endl;
         }
     }
