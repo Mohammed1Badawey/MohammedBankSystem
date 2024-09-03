@@ -1,6 +1,5 @@
 #pragma once
 #include "ClientManager.h"
-#include "GlobalVectors.h"
 
 using namespace std;
 

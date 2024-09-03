@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "Parser.h"
-#include "GlobalVectors.h"
 #include <thread>
 
 

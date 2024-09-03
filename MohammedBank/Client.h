@@ -79,6 +79,6 @@ public:
 };
 
 static vector <Client> clientList;
-static vector <Client>::iterator itClientit;
+static vector <Client>::iterator itClient;
 
 
