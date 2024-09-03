@@ -62,6 +62,7 @@ public:
                 employee->addClient(*client);
                 FilesHelper::saveClient(client);
                 cout << "Client added successfully.\n";
+                FileManager::updateClients();
                 client->Display();
                 delete client;
                 break;

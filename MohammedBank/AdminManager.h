@@ -73,6 +73,7 @@ public:
                 admin->addClient(*client);
                 FilesHelper::saveClient(client);
                 cout << "Client added successfully.\n";
+                FileManager::updateClients();
                 client->Display();
                 delete client;
                 break;
@@ -93,6 +94,7 @@ public:
                 admin->addEmployee(*employee);
                 FilesHelper::saveEmployee(employee);
                 cout << "\nEmployee added successfully.\n";
+                FileManager::updateClients();
                 employee->Display();
                 delete employee;
                 break;
