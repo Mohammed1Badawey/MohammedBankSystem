@@ -9,9 +9,8 @@ class Validation
 public:
 
     static bool checkName(const string& name) {
-        size_t lengthOfName = name.size();
 
-        if (lengthOfName < 5 || lengthOfName > 20)
+        if (name.size() < 5 || name.size() > 20)
         {
             cout << "The name must be between 5 and 20 characters\n";
             return false;
