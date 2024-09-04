@@ -1,9 +1,6 @@
 #pragma once
 #include <vector>
-#include "Person.h"
 #include "Client.h"
-
-
 
 using namespace std;
 class Employee : public Person
@@ -50,9 +47,9 @@ public:
     }
 
     Client* searchClient(int id) {
-        for (int i = 0; i < clientList.size();i++) {
-            if (clientList[i].getId() == id) {
-                return &clientList[i];
+        for (itClient = clientList.begin(); itClient != clientList.end(); ++itClient) {
+            if (itClient->getId() == id) {
+                return &(*itClient);
             }
         }
         return nullptr;
@@ -64,8 +61,8 @@ public:
             return;
         }
 
-        for (int i = 0; i < clientList.size(); i++) {
-            clientList[i].Display();
+        for (itClient = clientList.begin(); itClient != clientList.end(); ++itClient) {
+            itClient->Display();
             cout << "=============" << endl;
         }
     }

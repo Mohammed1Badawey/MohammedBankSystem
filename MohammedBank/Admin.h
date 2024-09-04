@@ -25,9 +25,9 @@ public:
     }
 
     Employee* searchEmployee(int id) {
-        for (int i = 0; i < employeeList.size(); i++) {
-            if (employeeList[i].getId() == id) {
-                return &employeeList[i];
+        for ( itEmployee = employeeList.begin(); itEmployee != employeeList.end(); ++itEmployee) {
+            if (itEmployee->getId() == id) {
+                return &(*itEmployee);
             }
         }
         return nullptr;
@@ -52,8 +52,8 @@ public:
             return;
         }
 
-        for (int i = 0; i < employeeList.size(); i++) {
-            employeeList[i].Display();
+        for (itEmployee = employeeList.begin(); itEmployee != employeeList.end(); ++itEmployee) {
+            itEmployee->Display();
             cout << "=============" << endl;
         }
 
